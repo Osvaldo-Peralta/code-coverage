@@ -63,14 +63,9 @@ Para encapsular el código reusable (tanto para el ejecutable principal como par
 - Aqui es donde se crea la libreria instrumentada `calculadora_sources`:
 ```cmake
 # Aplicar flags de cobertura solo a esta biblioteca
-if(ENABLE_COVERAGE) # Si coverage esta habilitado
-# A la biblioteca que creamos en la instruccion anterior le agregamos las banderas al compilar
-    target_compile_options(calculadora_sources PRIVATE 
-        -fprofile-arcs -ftest-coverage
-    )
-    target_link_libraries(calculadora_sources PRIVATE 
-        --coverage
-    )
+if(ENABLE_COVERAGE)
+    target_compile_options(calculadora_sources PRIVATE ${COVERAGE_FLAGS})
+    target_link_libraries(calculadora_sources PRIVATE ${COVERAGE_FLAGS})
 endif()
 ```
 - Le agregamos el directorio de cabeceras
