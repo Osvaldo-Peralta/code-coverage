@@ -1,0 +1,86 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cmake",
+			"label": "CMake: build",
+			"command": "build",
+			"targets": [
+				"all"
+			],
+			"group": "build",
+			"problemMatcher": [],
+			"detail": "CMake template build task"
+		},
+		{
+			"label": "clean-build",
+			"type": "shell",
+			"command": "rm -rf build && mkdir build",
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "cmake-configure",
+			"type": "shell",
+			"command": "cmake -DENABLE_COVERAGE=ON ..",
+			"options": {
+				"cwd": "${workspaceFolder}/build"
+			},
+			"dependsOn": [
+				"clean-build"
+			],
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "cmake-build",
+			"type": "shell",
+			"command": "make",
+			"options": {
+				"cwd": "${workspaceFolder}/build"
+			},
+			"dependsOn": [
+				"cmake-configure"
+			],
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "run-tests",
+			"type": "shell",
+			"command": "ctest --output-on-failure",
+			"options": {
+				"cwd": "${workspaceFolder}/build"
+			},
+			"dependsOn": [
+				"cmake-build"
+			],
+			"problemMatcher": []
+		},
+		{
+			"label": "generate-coverage",
+			"type": "shell",
+			"command": "make coverage",
+			"options": {
+				"cwd": "${workspaceFolder}/build"
+			},
+			"dependsOn": [
+				"run-tests"
+			],
+			"problemMatcher": []
+		},
+		{
+			"label": "build-and-coverage",
+			"type": "shell",
+			"command": "echo 'Proceso completado'",
+			"dependsOn": [
+				"generate-coverage"
+			],
+			"problemMatcher": [],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		}
+	]
+}
