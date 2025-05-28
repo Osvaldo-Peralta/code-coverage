@@ -23,10 +23,6 @@ double Calculadora::multiplica(double numero, double numero2)
 
 double Calculadora::divide(double numero, double numero2)
 {
-    if (numero2 == 0)
-    {
-        throw std::invalid_argument("No se puede dividir entre 0");
-    }
     return numero / numero2;
 }
 
@@ -39,11 +35,12 @@ double Calculadora::validarDivicion()
         cout << "Ingresa el numero: ";
         cin >> numeroValido;
 
-        if (numeroValido == 0)
-        {
-            cout << "[Advertencia]: El numero no puede ser 0" << endl;
+        if (numeroValido != 0)
+        { // Corregido: verificar desigualdad
             return numeroValido;
         }
+        // throw std::out_of_range("[Advertencia]: ");
+        cout << "El numero no puede ser 0" << endl;
     }
 }
 
@@ -73,7 +70,7 @@ double Calculadora::obtenerNumero()
     double cantidad;
     while (true)
     {
-        cout << "Ingresa el un numero: ";
+        cout << "Ingresa un numero: ";
         cin >> cantidad;
 
         return cantidad;
