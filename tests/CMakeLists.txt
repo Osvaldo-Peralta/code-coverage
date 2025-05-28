@@ -18,7 +18,7 @@ FetchContent_MakeAvailable(googletest)
 set(PROJECT_ROOT ${CMAKE_SOURCE_DIR}/..) # Ajustar segun lo necesitemos
 
 # Ejecutable de pruebas
-add_executable(${PROJECT_NAME} test_calculadora.cpp)
+add_executable(${PROJECT_NAME} test_calculadora.cpp test_Metodos.cpp) # Actualizado: Incluye las pruebas de simulaciones de entradas
 
 # Incluir cabeceras de la calculadora
 target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_ROOT}/include)

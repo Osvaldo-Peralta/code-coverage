@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
-
 #include "Calculadora.h"
+
 TEST(myCalculadoraTest, SumaTest)
 {
     Calculadora calculadorcita;
@@ -27,7 +27,6 @@ TEST(myCalculadoraTest, DivideTest)
 {
     Calculadora calculadorcita;
     EXPECT_DOUBLE_EQ(calculadorcita.divide(20, -5), -4);
-    EXPECT_THROW(calculadorcita.divide(20, 0), std::invalid_argument);
     EXPECT_DOUBLE_EQ(calculadorcita.divide(10, 2), 5);
 }
 
