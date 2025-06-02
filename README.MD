@@ -159,3 +159,6 @@ endif()
     - Los archivos .gcda se generan solo después de ejecutar el código.
 + `WORKING_DIRECTORY ${CMAKE_BINARY_DIR}`: Ejecuta `gcovr` desde el directorio `build/`.
     - Evita conflictos con rutas relativas/absolutas.
+
+### Consideraciones
+- Verificar si el archivo tasks.json esta configurado para eleminar la carpeta build/ junto con la compilación
